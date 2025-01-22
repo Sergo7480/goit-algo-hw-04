@@ -1,9 +1,10 @@
 import os
-
+import sys
 from pathlib import Path
 from colorama import Fore, Style
 
 def display_directory_structure(directory_path, indent=''):
+    
     try:
         directory_path = Path(directory_path)
         if not directory_path.is_dir():
@@ -25,5 +26,9 @@ def display_directory_structure(directory_path, indent=''):
         print(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
 
 if __name__ == "__main__":
-    directory_to_display = input("Enter the directory path: ")
+    if len(sys.argv) != 2:
+        print(f"{Fore.RED}Usage: python {sys.argv[0]} <directory_path>{Style.RESET_ALL}")
+        sys.exit(1)
+    
+    directory_to_display = sys.argv[1]
     display_directory_structure(directory_to_display)
