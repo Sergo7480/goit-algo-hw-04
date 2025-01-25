@@ -3,15 +3,11 @@ def parse_input(user_input):
     return cmd.lower(), args
 
 def add_contact(args, contacts):
-    if len(args) != 2:
-        return "Error: Command 'add' requires exactly two arguments: name and phone."
     name, phone = args
     contacts[name] = phone
     return "Contact added."
 
 def change_contact(args, contacts):
-    if len(args) != 2:
-        return "Error: Command 'change' requires exactly two arguments: name and phone."
     name, phone = args
     if name in contacts:
         contacts[name] = phone
@@ -20,8 +16,6 @@ def change_contact(args, contacts):
         return "Error: Contact not found."
 
 def show_phone(args, contacts):
-    if len(args) != 1:
-        return "Error: Command 'phone' requires exactly one argument: name."
     name = args[0]
     if name in contacts:
         return f"Phone number for {name}: {contacts[name]}"
